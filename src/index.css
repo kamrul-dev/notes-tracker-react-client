@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.color-43919B {
+  background-color: #43919B;
+  color: white;
+}
+.color-btn-30AADD{
+ background-color: #247881;
+ border: 1px solid #00FFC6;
+ color: white;
+}
+.color-btn-30AADD:hover{
+  background-color: white;
+  color: black;
+}
+
+.color-card-body-247881 {
+  background-color: #247881;
+  color: rgb(243, 243, 243);
+}
+
+.note-card {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(20, 20, 20);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #130e0e;
+}
