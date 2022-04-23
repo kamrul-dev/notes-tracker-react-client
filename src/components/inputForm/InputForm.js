@@ -16,7 +16,6 @@ const inputForm = () => {
             name="user_name"
           />
         </div>
-
         <div className="input-group">
           <span className="input-group-text">Write Notes</span>
           <textarea
