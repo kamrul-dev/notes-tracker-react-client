@@ -12,8 +12,7 @@ const customStyles = {
   padding: "5px"
 };
 
-const NoteCard = ({ note, handleDelete, handleUpdate }) => {
-
+const NoteCard = ({ note, handleDelete, isReload, setIsReload}) => {
 
   return (
     <div className="col mt-5" style={{ position: "relative" }}>
@@ -42,7 +41,7 @@ const NoteCard = ({ note, handleDelete, handleUpdate }) => {
             </button>
           </div>
           {/* <button>update</button> */}
-          <UpdateModal handleUpdate={handleUpdate} note={note}/>
+          <UpdateModal note={note} isReload={isReload} setIsReload={setIsReload} id={note._id}/>
         </div>
       </div>
     </div>

@@ -29,9 +29,6 @@ to handle search by query, and it will be passed as props to header
 
 
 
-
-
-
   /*2. here there will be a function named handleDelete
   to delete a note, and it will be passed as props to NoteCard that will be triggered using delete button.
    */
@@ -62,27 +59,6 @@ to handle search by query, and it will be passed as props to header
     to update data, and it will be passed as props to NoteCard and 
    later it will be passed to Update modal using props.
  */
-
-  const handleUpdate = (event, id) => {
-    event.preventDefault();
-    const userName = event.target.userName.value;
-    const textData = event.target.textData.value;
-
-    const url = `http://localhost:5000/note/${id}`;
-    fetch(url, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({ userName, textData })
-    })
-      .then(res => res.json())
-      .then(data => {
-        alert('User Updated Successfully');
-        setIsReload(!isReload);
-      })
-  }
-
 
 
 
@@ -115,7 +91,7 @@ to post data to backend, and it will be passed as props to InputFrom.
 
   return (
     <div className="App">
-      <Header />
+      <Header/>
       <InputForm handlePost={handlePost} />
       <div className="row row-cols-1 row-cols-md-3 g-4 m-2">
         {notes.map((note) => (
@@ -123,8 +99,8 @@ to post data to backend, and it will be passed as props to InputFrom.
             key={note._id}
             note={note}
             setIsReload={setIsReload}
+            isReload={isReload}
             handleDelete={handleDelete}
-            handleUpdate={handleUpdate}
           />
         ))}
       </div>
