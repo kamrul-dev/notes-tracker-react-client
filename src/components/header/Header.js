@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({handleSearch}) => {
   
   
 
@@ -9,7 +9,7 @@ const Header = () => {
     <nav className="navbar navbar-dark" style={{backgroundColor: "#247881"}}>
       <div className="container mx-auto container-fluid">
         <span className="fw-bold fs-5 text-white">Notes Tracker</span>
-        <form className="d-flex">
+        <form onSubmit={handleSearch} className="d-flex">
           <input
             className="form-control me-2"
             type="search"
