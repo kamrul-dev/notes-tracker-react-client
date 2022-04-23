@@ -12,7 +12,7 @@ const customStyles = {
   padding: "5px"
 };
 
-const NoteCard = ({ note, handleDelete }) => {
+const NoteCard = ({ note, handleDelete, handleUpdate }) => {
 
 
   return (
@@ -34,7 +34,7 @@ const NoteCard = ({ note, handleDelete }) => {
         <div className="card-footer d-flex justify-content-center">
           <div>
             <button
-            onClick={() => handleDelete(note._id)}
+              onClick={() => handleDelete(note._id)}
               className="color-btn-30AADD btn btn-sm mx-2 "
 
             >
@@ -42,7 +42,7 @@ const NoteCard = ({ note, handleDelete }) => {
             </button>
           </div>
           {/* <button>update</button> */}
-          <UpdateModal />
+          <UpdateModal handleUpdate={handleUpdate} note={note}/>
         </div>
       </div>
     </div>

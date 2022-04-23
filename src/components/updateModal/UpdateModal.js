@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Modal from "react-modal";
 
@@ -19,9 +19,9 @@ Modal.setAppElement("#root");
 
 //don't worry its just a package for modal. just go and explore https://www.npmjs.com/package/react-modal
 
-export default function UpdateModal() {
+export default function UpdateModal({ handleUpdate, note }) {
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -29,7 +29,7 @@ export default function UpdateModal() {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
+    subtitle.style.color = "#fff";
   }
 
   function closeModal() {
@@ -54,13 +54,14 @@ export default function UpdateModal() {
         </button>
         <div className="mb-1 mt-1 fw-bold">Please insert text for update</div>
         <div className=" p-3 color-card-body-247881 rounded">
-          <form className="container " >
+          <form onSubmit={() => handleUpdate(note._id)} className="container " >
             <div className="input-group mb-3 mt-5">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Your name"
                 aria-label="Username"
+                name="userName"
               />
             </div>
 
@@ -68,6 +69,7 @@ export default function UpdateModal() {
               <textarea
                 className="form-control"
                 aria-label="With textarea"
+                name="textData"
               ></textarea>
             </div>
             <div className="mt-4">

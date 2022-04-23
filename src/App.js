@@ -17,7 +17,6 @@ function App() {
       .then(res => res.json())
       .then(data => setNotes(data))
 
-
   }, []);
 
   /*
@@ -64,7 +63,25 @@ to handle search by query, and it will be passed as props to header
    later it will be passed to Update modal using props.
  */
 
+  const handleUpdate = (event, id) => {
+    event.preventDefault();
+    const userName = event.target.userName.value;
+    const textData = event.target.textData.value;
 
+    const url = `http://localhost:5000/note/${id}`;
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({ userName, textData })
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert('User Updated Successfully');
+        setIsReload(!isReload);
+      })
+  }
 
 
 
@@ -107,6 +124,7 @@ to post data to backend, and it will be passed as props to InputFrom.
             note={note}
             setIsReload={setIsReload}
             handleDelete={handleDelete}
+            handleUpdate={handleUpdate}
           />
         ))}
       </div>
