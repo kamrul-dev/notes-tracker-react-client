@@ -36,7 +36,18 @@ to handle search by query, and it will be passed as props to header
   /*2. here there will be a function named handleDelete
   to delete a note, and it will be passed as props to NoteCard that will be triggered using delete button.
    */
-
+  const handleDelete = (id) => {
+    const url = `http://localhost:5000/note/${id}`;
+    fetch(url, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {
+        const remaining = notes.filter(note => note._id !== id);
+        setNotes(remaining);
+        setIsReload(!isReload);
+      })
+  }
 
 
 
@@ -94,6 +105,8 @@ to post data to backend, and it will be passed as props to InputFrom.
           <NoteCard
             key={note._id}
             note={note}
+            setIsReload={setIsReload}
+            handleDelete={handleDelete}
           />
         ))}
       </div>
