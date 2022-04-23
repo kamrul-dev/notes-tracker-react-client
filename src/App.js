@@ -12,11 +12,11 @@ function App() {
 
   useEffect(() => {
 
-   fetch("http://localhost:5000/notes")
-   .then(res=>res.json())
-   .then(data=>setNotes(data))
+    fetch("http://localhost:5000/notes")
+      .then(res => res.json())
+      .then(data => setNotes(data))
 
-    
+
   }, []);
 
   /*
@@ -24,17 +24,17 @@ function App() {
 to handle search by query, and it will be passed as props to header
 
   */
-  
 
 
 
 
 
 
-  
-/*2. here there will be a function named handleDelete
-to delete a note, and it will be passed as props to NoteCard that will be triggered using delete button.
- */
+
+
+  /*2. here there will be a function named handleDelete
+  to delete a note, and it will be passed as props to NoteCard that will be triggered using delete button.
+   */
 
 
 
@@ -54,7 +54,7 @@ to delete a note, and it will be passed as props to NoteCard that will be trigge
 
 
 
-   
+
 
 
 
@@ -62,13 +62,31 @@ to delete a note, and it will be passed as props to NoteCard that will be trigge
 4.  there will be a function named handlePost
 to post data to backend, and it will be passed as props to InputFrom.
  */
+  const handlePost = (event) => {
+    event.preventDefault();
+    const userName = event.target.userName.value;
+    const textData = event.target.textData.value;
 
-  
+    const url = `http://localhost:5000/note`;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({userName, textData})
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+
+  }
+
 
   return (
     <div className="App">
-      <Header  />
-      <InputForm />
+      <Header />
+      <InputForm handlePost={handlePost} />
       <div className="row row-cols-1 row-cols-md-3 g-4 m-2">
         {notes.map((note) => (
           <NoteCard
