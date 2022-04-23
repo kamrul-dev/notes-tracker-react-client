@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [isReload, setIsReload] = useState(false);
 
   useEffect(() => {
 
@@ -73,11 +74,12 @@ to post data to backend, and it will be passed as props to InputFrom.
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify({userName, textData})
+      body: JSON.stringify({ userName, textData })
     })
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        setIsReload(!isReload);
       })
 
   }

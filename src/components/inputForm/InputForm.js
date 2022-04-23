@@ -1,6 +1,6 @@
 import React from "react";
 
-const inputForm = ({handlePost}) => {
+const inputForm = ({ handlePost }) => {
 
   return (
     <div className=" p-3 color-43919B">
@@ -12,6 +12,7 @@ const inputForm = ({handlePost}) => {
             placeholder="Your name"
             aria-label="Username"
             name="userName"
+            required
           />
         </div>
         <div className="input-group">
@@ -20,6 +21,7 @@ const inputForm = ({handlePost}) => {
             className="form-control"
             aria-label="With textarea"
             name="textData"
+            required
           ></textarea>
         </div>
         <div className="mt-4">
